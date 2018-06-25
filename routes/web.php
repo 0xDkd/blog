@@ -11,12 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','PostsController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/test','CategoriesController@index');
+Route::resource('/posts','PostsController');
+
+Route::resource('/users','UsersController');
+Route::get('/users/{user}/post','UsersController@show')->name('users.post');
+Route::get('/users/{user}/comment','UsersController@comment')->name('users.comment');
+Route::get('/users/{user}/favorite','UsersController@favorite')->name('users.favorite');
+Route::get('/users/{user}/cover','UsersController@cover')->name('users.cover');
+
+
+Route::resource('/categories','CategoriesController');

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-//    protected $fillable = [
-//        'title', 'content', '',
-//    ];
+    protected $fillable = [
+        'title', 'content', 'description','parent_id',
+    ];
 
     /**
      * @desc 获取一级子节点
@@ -25,6 +25,11 @@ class Category extends Model
     public function allChildrenCategories()
     {
         return $this->childCategory()->with('allChildrenCategories');
+    }
+
+    public function posts()
+    {
+        $this->hasMany(Post::class);
     }
 
 }

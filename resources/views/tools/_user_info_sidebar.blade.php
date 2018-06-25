@@ -3,8 +3,8 @@
         <div class="auth-msg" style="display: none;"></div>
         <div class="auth-info">
             <div class="avatar-box"
-                 style="background-image: url(&quot;https://ooo.0o0.ooo/2017/02/19/58a9706412c15.png&quot;);">
-                <a href="/user/195111" class="">
+                 style="background-image: url(&quot;{{Auth::user()->cover()}}&quot;);">
+                <a href="{{route('users.show',Auth::user()->id)}}" class="">
                     <img src="{{Auth::user()->gravatar()}}"
                          alt="aimerforreimu" class="avatar">
                 </a>

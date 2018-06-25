@@ -1,4 +1,3 @@
-<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
@@ -12,3 +11,4 @@
     <meta name="description" content="绅士仓库，一个致力于优秀ACG资源的整理发布平台，搜集整理各类音乐，萌图，动漫等二次元资源。">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
