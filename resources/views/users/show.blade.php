@@ -13,10 +13,10 @@
                                  style="background-image: url(&quot;{{$user->cover()}}&quot;);"></div>
                             <div class="head-detail">
                                 <div class="user-info text-center">
-                                    <div class="user-avatar"><img src="{{ Auth::user()->avatar() }}"
+                                    <div class="user-avatar"><img src="{{ $user->avatar() }}"
                                                                   class="avatar"></div>
-                                    <h3 class="user-name">{{ Auth::user()->name }}</h3>
-                                    <div class="user-description mx-auto"><span>{{ Auth::user()->introduction }}</span>
+                                    <h3 class="user-name">{{ $user->name }}</h3>
+                                    <div class="user-description mx-auto"><span>{{ $user->introduction }}</span>
                                     </div>
                                     <div class="user-meta">
                                     </div>
@@ -27,16 +27,16 @@
                     <div class="user-header-nav">
                         <div class="nav-wrap mx-auto">
                             <ul class="reset-ul-style">
-                                <li><a href="{{ route('users.post',Auth::user()->id) }}"
+                                <li><a href="{{ route('users.post',$user->id) }}"
                                        class="@if(strpos($request->url(),'post')) router-link-exact-active active @endif">投稿</a>
                                 </li>
-                                <li><a href="{{ route('users.comment',Auth::user()->id) }}"
+                                <li><a href="{{ route('users.comment',$user->id) }}"
                                        class="@if(strpos($request->url(),'comment')) router-link-exact-active active @endif">回复</a>
                                 </li>
-                                <li><a href="{{ route('users.favorite',Auth::user()->id) }}"
+                                <li><a href="{{ route('users.favorite',$user->id) }}"
                                        class="@if(strpos($request->url(),'favorite')) router-link-exact-active active @endif">收藏</a>
                                 </li>
-                                <li><a href="{{ route('users.cover',Auth::user()->id) }}"
+                                <li><a href="{{ route('users.cover',$user->id) }}"
                                        class="@if(strpos($request->url(),'cover')) router-link-exact-active active @endif">设置</a>
                                 </li>
                                 <li class="user-search-btn"><input placeholder="搜索本作者的文章" class="form-control"
