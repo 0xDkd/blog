@@ -5,15 +5,15 @@
             <div class="avatar-box"
                  style="background-image: url(&quot;{{Auth::user()->cover()}}&quot;);">
                 <a href="{{route('users.show',Auth::user()->id)}}" class="">
-                    <img src="{{Auth::user()->gravatar()}}"
-                         alt="aimerforreimu" class="avatar">
+                    <img src="{{ Auth::user()->avatar() }}"
+                         alt="{{ Auth::user()->nickname }}" class="avatar">
                 </a>
                 <span class="role">成员</span>
             </div>
             <div class="info-box">
                 <div class="name">
-                    <a href="/user/195111" class="display-name">{{ Auth::user()->name }}</a>
-                    <a href="/account" class="">(设置)</a>
+                    <a href="{{route('users.show',Auth::user()->id)}}" class="display-name">{{ Auth::user()->nickname }}</a>
+                    <a href="{{route('users.edit',Auth::user()->id)}}" class="">(设置)</a>
                 </div>
                 <div class="description">
                     这个人很懒，什么都没有留下...
@@ -22,19 +22,19 @@
             <div class="post-box">
                 <ul class="count">
                     <li>
-                        <a href="/user/195111/post" class="">
+                        <a href="{{ route('users.post',Auth::user()->id) }}" class="">
                             <div class="name">投稿</div>
                             <div class="num">0</div>
                         </a>
                     </li>
                     <li>
-                        <a href="/user/195111/comment" class="">
+                        <a href="{{ route('users.comment',Auth::user()->id) }}" class="">
                             <div class="name">吐槽</div>
                             <div class="num">0</div>
                         </a>
                     </li>
                     <li>
-                        <a href="/user/195111/favorite" class="">
+                        <a href="{{ route('users.favorite',Auth::user()->id) }}" class="">
                             <div class="name">收藏</div>
                             <div class="num">2</div>
                         </a>

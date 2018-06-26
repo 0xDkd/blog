@@ -30,14 +30,12 @@ class UserRequest extends FormRequest
             case 'PUT':
             case 'PATCH':
                 {
-
                     switch ($this->route) {
                         case 'profile':
                             return [
-                                'route'        => 'required',
                                 'nickname'     => 'between:2,10|regex:/^[一-龥A-Za-z0-9\-\__]+$/',
                                 'introduction' => 'max:80',
-                                'avatar'       => 'mimes:jpeg,bmp,png,gif,jpg'
+                                'avatar'       => 'mimes:jpeg,bmp,png,gif,jpg',
                             ];
                         case 'preference':
                             return [
@@ -45,8 +43,16 @@ class UserRequest extends FormRequest
                             ];
                         case 'security':
                             return [
-
+                                'password' => 'required|confirmed|between:6,32',
                             ];
+                        case 'cover':
+                            return [
+                                //cover 的验证不能使用 | 所以移动到了控制器里面使用 preg_match 进行验证
+                                'cover' => 'required'
+                            ];
+                        default :
+                            return [];
+
                     }
 
                 }
@@ -63,9 +69,12 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
-            'nickname.regex'   => '昵称只支持英文，数字，下划线',
-            'nickname.between' => '昵称长度必须在3-25之间',
-            'avatar.mimes'     => '头像必须是 jpeg,jpg,gif,png格式的图片',
+            'nickname.regex'     => '昵称中不能有空格和其它特殊符号',
+            'nickname.between'   => '昵称长度必须在3-25之间',
+            'avatar.mimes'       => '头像必须是 jpeg,jpg,gif,png格式的图片',
+            'cover.required'     => '封面链接不能为空',
+            'password.required'  => '密码不能为空',
+            'password.confirmed' => '两次密码必须相同',
             #'avatar.dimensions'=>'头像不够清晰,高度和宽度必须在200px以上',
         ];
     }

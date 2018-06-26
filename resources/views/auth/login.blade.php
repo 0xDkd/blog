@@ -69,47 +69,41 @@
 {{--</div>--}}
 {{--</div>--}}
 {{--@endsection--}}
+@extends('layouts.app')
 
-@include('layouts._header')
-<body>
-<div id="app" class="default">
-    @include('layouts._navbar')
-    <div id="animax">
-        <div id="main-container" class="container">
-            <div id="auth">
-                <div id="login" class="auth-page">
-                    <div class="container">
-                        <form class="auth-form mx-auto" method="POST" action="{{route('login')}}">
-                            <input type="hidden" value="{{csrf_token()}}" name="_token">
-                            <div class="text-center title"><h1>登录</h1></div>
-                            <div class="auth-msg" style="display: none;"></div>
-                            <div class="form-group"><input id="email" name="email" placeholder="输入你的者邮箱"
-                                                           class="form-control" type="text" value="{{old('email')}}">
-                                <div class="form-group-message"><!----></div>
-                            </div>
-                            <div class="form-group"><input id="password" name="password" placeholder="输入你的密码"
-                                                           class="form-control"
-                                                           type="password" value="{{old('password')}}">
-                                <div class="form-group-message"><!----> <!----> <!----></div>
-                            </div>
-                            <div class="form-checkbox">
-                                <div class="custom-control custom-checkbox">
-                                    <input id="remember" name="remember" {{ old('remember') ? 'checked' : '' }} class="custom-control-input" type="checkbox">
-                                    <label for="remember" class="custom-control-label"> 记住我的登录信息 </label></div>
-                            </div>
-                            <button class="btn btn-danger btn-block" type="submit">登录</button>
-                        </form>
-                        <div class="other-choose text-center"><a href="/auth/register" class="">注册</a> <span> 或者 </span>
-                            <a href="{{ route('password.request') }}" class="">重置密码</a></div>
+@section('title','登录')
+@section('content')
+    <div id="auth">
+        <div id="login" class="auth-page">
+            <div class="container">
+                <form class="auth-form mx-auto" method="POST" action="{{route('login')}}">
+                    <input type="hidden" value="{{csrf_token()}}" name="_token">
+                    <div class="text-center title"><h1>登录</h1></div>
+                    <div class="auth-msg" style="display: none;"></div>
+                    @include('common.error')
+                    <div class="form-group"><input id="email" name="email" placeholder="输入你的者邮箱"
+                                                   class="form-control" type="text" value="{{old('email')}}">
+                        <div class="form-group-message"><!----></div>
                     </div>
-                </div>
+                    <div class="form-group"><input id="password" name="password" placeholder="输入你的密码"
+                                                   class="form-control"
+                                                   type="password" value="{{old('password')}}">
+                        <div class="form-group-message"><!----> <!----> <!----></div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <div class="custom-control custom-checkbox">
+                            <input id="remember" name="remember" {{ old('remember') ? 'checked' : '' }} class="custom-control-input" type="checkbox">
+                            <label for="remember" class="custom-control-label"> 记住我的登录信息 </label></div>
+                    </div>
+                    <button class="btn btn-danger btn-block" type="submit">登录</button>
+                </form>
+                <div class="other-choose text-center"><a href="/register" class="">注册</a> <span> 或者 </span>
+                    <a href="{{ route('password.request') }}" class="">重置密码</a></div>
             </div>
         </div>
     </div>
-    @include('layouts._footer')
-</div>
+    @endsection
 
-
-</body>
 
 

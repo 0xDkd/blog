@@ -13,7 +13,7 @@
                                  style="background-image: url(&quot;{{$user->cover()}}&quot;);"></div>
                             <div class="head-detail">
                                 <div class="user-info text-center">
-                                    <div class="user-avatar"><img src="{{ Auth::user()->gravatar() }}"
+                                    <div class="user-avatar"><img src="{{ Auth::user()->avatar() }}"
                                                                   class="avatar"></div>
                                     <h3 class="user-name">{{ Auth::user()->name }}</h3>
                                     <div class="user-description mx-auto"><span>{{ Auth::user()->introduction }}</span>
@@ -48,15 +48,15 @@
                 </div>
                 <div class="user-panel">
                     @if(strpos($request->url(),'post'))
-                        @include('users.user_info.user_post')
+                        @include('users.user_info_module.user_post')
                     @elseif(strpos($request->url(),'comment'))
-                        @include('users.user_info.user_comment')
+                        @include('users.user_info_module.user_comment')
                     @elseif(strpos($request->url(),'favorite'))
-                        @include('users.user_info.user_favorite')
+                        @include('users.user_info_module.user_favorite')
                     @elseif(strpos($request->url(),'cover'))
-                        @include('users.user_info.user_cover_set')
+                        @include('users.user_info_module.user_cover_set')
                     @else
-                        @include('users.user_info.user_post')
+                        @include('users.user_info_module.user_post')
                     @endif
                 </div>
             </div>

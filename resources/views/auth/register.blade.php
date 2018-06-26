@@ -76,46 +76,43 @@
 {{--</div>--}}
 {{--@endsection--}}
 
-@include('layouts._header')
-<body>
-<div id="app" class="default">
-    @include('layouts._navbar')
-    <div id="animax">
-        <div id="main-container" class="container">
-            <div id="auth">
-                <div id="register" class="auth-page mx-auto">
-                    <div class="container">
-                        <form class="auth-form mx-auto" action="{{route('register')}}" method="POST">
-                            <div class="text-center title"><h1>注册</h1></div>
-                            <div class="auth-msg" style="display: none;"></div>
-                            <div class="form-group"><input id="name" name="name" placeholder="输入你的用户名" autocomplete="off"
-                                                           class="form-control" type="text" required>
-                                <div class="form-group-message"><span class="message">请输入你的用户名</span> <!----> <!---->
-                                </div>
-                            </div>
-                            <div class="form-group"><input id="email" name="email" placeholder="输入你的邮箱" autocomplete="off"
-                                                           class="form-control" type="email" value="{{old('email')}}">
-                                <div class="form-group-message"><!----> <!----></div>
-                            </div>
-                            <div class="form-group"><input id="password" name="password" placeholder="输入你的密码" autocomplete="off"
-                                                           class="form-control" type="password" value="{{old('password')}}}" required>
-                                <div class="form-group-message"><!----> <!----> <!----></div>
-                            </div>
-                            <div class="form-group"><input id="password-confirm" name="password-confirm" placeholder="重复输入" autocomplete="off"
-                                                           class="form-control" type="password" value="{{old('password-confirm')}}}" required>
-                                <div class="form-group-message"><!----> <!----> <!----></div>
-                            </div>
-                            <button type="submit" class="btn btn-danger btn-block">注册</button>
-                        </form>
-                        <div class="other-choose text-center"><a href="/auth/login" class="">登录</a> <span> 或者 </span> <a
-                                    href="/auth/reset" class="">重置密码</a></div>
+@extends('layouts.app')
+
+@section('title','用户注册')
+
+@section('content')
+    <div id="auth">
+        <div id="register" class="auth-page mx-auto">
+            <div class="container">
+                <form class="auth-form mx-auto" action="{{route('register')}}" method="POST">
+                    <div class="text-center title"><h1>注册</h1></div>
+                    <div class="auth-msg" style="display: none;"></div>
+                    @include('common.error')
+                    <div class="form-group"><input id="name" name="name" placeholder="输入你的用户名" autocomplete="off"
+                                                   class="form-control" type="text" required>
+                        <div class="form-group-message"><span class="message">请输入你的用户名</span> <!----> <!---->
+                        </div>
                     </div>
-                </div>
+                    <div class="form-group"><input id="email" name="email" placeholder="输入你的邮箱" autocomplete="off"
+                                                   class="form-control" type="email" value="{{old('email')}}">
+                        <div class="form-group-message"><!----> <!----></div>
+                    </div>
+                    <div class="form-group"><input id="password" name="password" placeholder="输入你的密码" autocomplete="off"
+                                                   class="form-control" type="password"
+                                                   required>
+                        <div class="form-group-message"><!----> <!----> <!----></div>
+                    </div>
+                    <div class="form-group"><input id="password-confirm" name="password-confirm" placeholder="重复输入"
+                                                   autocomplete="off"
+                                                   class="form-control" type="password"
+                                                    required>
+                        <div class="form-group-message"><!----> <!----> <!----></div>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-block">注册</button>
+                </form>
+                <div class="other-choose text-center"><a href="/login" class="">登录</a> <span> 或者 </span> <a
+                            href="{{ route('password.request') }}" class="">重置密码</a></div>
             </div>
         </div>
     </div>
-    @include('layouts._footer')
-</div>
-
-</body>
-</html>
+@endsection

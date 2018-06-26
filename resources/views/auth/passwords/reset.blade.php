@@ -78,7 +78,7 @@
             <div id="auth">
                 <div id="reset-password" class="auth-page mx-auto">
                     <div class="container">
-                        <form class="auth-form mx-auto">
+                        <form class="auth-form mx-auto" method="POST" action="{{ route('password.request') }}">
                             <div class="text-center title"><h1>重置密码</h1></div>
                             <div class="auth-msg" style="display: none;"></div>
                             <div class="form-group"><input id="email" placeholder="输入你的邮箱" autocomplete="off"
@@ -89,7 +89,10 @@
                                                            class="form-control" type="text">
                                 <div class="form-group-message"><span class="message">重复密码</span> <!----></div>
                             </div>
-                            <button class="btn btn-danger btn-block">发送邮件</button>
+                            {{--hidden--}}
+                            <input type="hidden" name="token" value="{{ $token }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-danger btn-block">重置密码</button>
                         </form>
                         <div class="other-choose text-center"><a href="/login" class="">登录</a> <span> 或者 </span> <a
                                     href="/register" class="">注册</a></div>

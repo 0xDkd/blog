@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','nickname','introduction','cover'
+        'name', 'email', 'password','nickname','introduction','cover','avatar'
     ];
 
     /**
@@ -32,8 +32,12 @@ class User extends Authenticatable
         $this->hasMany(Post::class);
     }
 
-    public function gravatar($size = '150')
+    public function avatar($size = '150')
     {
+
+        if ($this->attributes['avatar']){
+            return $this->attributes['avatar'];
+        }
         $email_md5 = md5(trim($this->attributes['email']));
         $link = 'https://gravatar.loli.net/avatar/'. $email_md5 .'?s='. $size .'&#038;d=mm&#038;r=g';
         return $link;

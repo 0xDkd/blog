@@ -22,9 +22,13 @@ Route::resource('/posts','PostsController');
 
 Route::resource('/users','UsersController');
 Route::get('/users/{user}/post','UsersController@show')->name('users.post');
-Route::get('/users/{user}/comment','UsersController@comment')->name('users.comment');
-Route::get('/users/{user}/favorite','UsersController@favorite')->name('users.favorite');
-Route::get('/users/{user}/cover','UsersController@cover')->name('users.cover');
+Route::get('/users/{user}/comment','UsersController@show')->name('users.comment');
+Route::get('/users/{user}/favorite','UsersController@show')->name('users.favorite');
+Route::get('/users/{user}/cover','UsersController@show')->name('users.cover');
+
+Route::get('/users/{user}/edit/profile','UsersController@edit')->name('users.profile');
+Route::get('/users/{user}/edit/preference','UsersController@edit')->name('users.preference');
+Route::get('/users/{user}/edit/security','UsersController@edit')->name('users.security');
 
 
 Route::resource('/categories','CategoriesController');
