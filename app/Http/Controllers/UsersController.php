@@ -18,11 +18,14 @@ class UsersController extends Controller
 
     public function edit(User $user, UserRequest $request)
     {
+        $this->authorize('update',$user);
+        
         return view('users.edit', compact('user', 'request'));
     }
 
     public function update(UserRequest $request, User $user, ImageUploadHandler $uploader)
     {
+        $this->authorize('update',$user);
         switch ($request->route) {
             case 'profile':
                 //判断头像

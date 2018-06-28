@@ -15,7 +15,7 @@
                     {{--hidden--}}
                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                     <button type="submit" class="btn btn-danger btn-block">发送邮件</button>
-                    
+
                 </form>
                 <div class="other-choose text-center"><a href="/login" class="">登录</a> <span> 或者 </span> <a
                             href="/register" class="">注册</a></div>
