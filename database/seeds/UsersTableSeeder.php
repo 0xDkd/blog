@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\UserOption;
 
 class UsersTableSeeder extends Seeder
 {
@@ -27,7 +28,13 @@ class UsersTableSeeder extends Seeder
             $user->avatar = $faker->randomElement($avatars);
         });
 
+        $options = factory(UserOption::class)->times(50)->make()->each(function ($option,$index){
+           $option->user_id = $index+1;
+        });
+
         User::insert($users->makeVisible(['password','remember_token'])->toArray());
+
+        UserOption::insert($options->toArray());
 
         $user = User::find(1);
         $user->name = 'Test';
@@ -37,5 +44,6 @@ class UsersTableSeeder extends Seeder
         $user->avatar = 'http://blog.test/uploads/images/avatars/201806/26/1_1530000595_ohltc5Tn2L.png';
         $user->introduction = '一个没有任何存在感的人，划水划水';
         $user->save();
+
     }
 }

@@ -43,5 +43,8 @@ class CategoriesTableSeeder extends Seeder
         $category = Category::find(2);
         $category->parent_id = 1;
         $category->save();
+        $category = Category::find(3);
+        $category->parent_id = 1;
+        $category->save();
     }
 }

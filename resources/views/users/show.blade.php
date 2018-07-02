@@ -36,9 +36,11 @@
                                 <li><a href="{{ route('users.favorite',$user->id) }}"
                                        class="@if(strpos($request->url(),'favorite')) router-link-exact-active active @endif">收藏</a>
                                 </li>
-                                <li><a href="{{ route('users.cover',$user->id) }}"
-                                       class="@if(strpos($request->url(),'cover')) router-link-exact-active active @endif">设置</a>
-                                </li>
+                                @can('update',$user)
+                                    <li><a href="{{ route('users.cover',$user->id) }}"
+                                           class="@if(strpos($request->url(),'cover')) router-link-exact-active active @endif">设置</a>
+                                    </li>
+                                @endcan
                                 <li class="user-search-btn"><input placeholder="搜索本作者的文章" class="form-control"
                                                                    type="text">
                                 </li>
@@ -54,7 +56,9 @@
                     @elseif(strpos($request->url(),'favorite'))
                         @include('users.user_info_module.user_favorite')
                     @elseif(strpos($request->url(),'cover'))
-                        @include('users.user_info_module.user_cover_set')
+                        @can('update',$user)
+                            @include('users.user_info_module.user_cover_set')
+                        @endcan
                     @else
                         @include('users.user_info_module.user_post')
                     @endif

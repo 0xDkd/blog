@@ -11,6 +11,11 @@ use Symfony\Component\HttpKernel\Client;
 class UsersController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function show(User $user, UserRequest $request)
     {
         return view('users.show', compact('user', 'request'));

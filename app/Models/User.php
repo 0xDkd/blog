@@ -32,6 +32,11 @@ class User extends Authenticatable
         $this->hasMany(Post::class);
     }
 
+    public function options()
+    {
+        $this->hasMany(UserOption::class);
+    }
+
     public function avatar($size = '150')
     {
 

@@ -2,7 +2,7 @@
     <!---->
     <span class="row">
         @foreach($posts as $post)
-            <div class=" post col-sm-12 col-md-6 col-lg-6">
+            <div class="post col-sm-6 col-md-4">
                                     <div class="post-card thumb-post-card">
                                         <section class="post-card-wrap">
                                             <a href="{{route('posts.show', $post->id )}}" class="" target="_blank">

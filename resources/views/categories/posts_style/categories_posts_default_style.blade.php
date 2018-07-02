@@ -1,7 +1,7 @@
 <div class="post-list">
     <span class="row">
         @foreach($posts as $post)
-            <div class="post col-sm-12">
+            <div class="post col-sm-8">
             <div class="post-card full-post-card">
                 <section class="post-card-wrap">
                     <div class="post-card-content">
